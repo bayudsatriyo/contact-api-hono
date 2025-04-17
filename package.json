@@ -10,7 +10,11 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
     "@types/bun": "latest",
-    "prisma": "^5.22.0"
+    "prisma": "^5.22.0",
+    "semantic-release": "^24.2.3"
   }
 }
