@@ -3,40 +3,36 @@ name: Release
 on:
   pull_request:
     types: [closed]
-    branches:
-      - main
-      - staging
+    branches: [main, staging]
 
 jobs:
   release:
     if: github.event.pull_request.merged == true
-    name: Release
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      issues: write
-      pull-requests: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.base.ref }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'yarn'
 
       - name: Install dependencies
         run: |
-            if [ -f yarn.lock ]; then
-              yarn install --frozen-lockfile
-            else
-              yarn install
-            fi
+          # Fallback ke regular install jika yarn.lock tidak ada
+          if [ -f yarn.lock ]; then
+            echo "Using existing yarn.lock"
+            yarn install --frozen-lockfile
+          else
+            echo "No yarn.lock found, generating new one"
+            yarn install
+          fi
 
       - name: Release
         env:

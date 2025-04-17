@@ -1,5 +1,6 @@
 {
   "name": "belajar_bun_hono_restful_api",
+  "license": "MIT",
   "scripts": {
     "dev": "bun run --hot src/index.ts"
   },
