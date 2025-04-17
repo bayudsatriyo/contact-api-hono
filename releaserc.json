@@ -1,5 +1,5 @@
 {
-  "branches": ["main", "staging"],
+  "branches": ["main", "staging", "dev"],
   "plugins": [
     ["@semantic-release/commit-analyzer", {
       "preset": "conventionalcommits",
@@ -9,11 +9,7 @@
         "noteKeywords": ["BREAKING CHANGE"]
       },
       "releaseRules": [
-        {"subject": "*feat*", "release": "minor"},
-        {"subject": "*fix*", "release": "patch"},
-        {"subject": "*perf*", "release": "patch"},
-        {"subject": "*!*", "release": "major"},
-        {"subject": "*breaking*", "release": "major"}
+        {"subject": ".*", "release": "patch"}
       ]
     }],
     "@semantic-release/release-notes-generator",
