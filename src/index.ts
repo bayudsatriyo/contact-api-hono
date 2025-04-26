@@ -16,4 +16,9 @@ app.route("/", addressController);
 
 app.onError(errorHandler);
 
-export default app;
+export default {
+  port: 3000,
+  fetch: app.fetch
+};
+
+// testing 123
