@@ -18,6 +18,8 @@ export const authMiddleware: MiddlewareHandler = async (
     );
   }
 
+  console.log('hello')
+
   c.set("user", user);
 
   return next();
